@@ -57,7 +57,7 @@ circle (x=150, y=150), and ending some distance away.
 So what we're going to do is reconstruct the above somehow, but change the lines
 so they point in the appropriate directions for a given time.
 
-## An Acceptance Test
+## What is An Acceptance Test ?
 
 Before we get too stuck in, lets think about an acceptance test.
 
@@ -86,6 +86,25 @@ the original acceptance test pass.
 Something like this _classic_ picture by Nat Pryce and Steve Freeman
 
 ![img.png](TDD-outside-in.jpg)
+
+
+## Go Test Packages
+
+Previous chapters have used entirely unit tests - these tests need access to the internals of the package under test and as such are part of the same package.
+
+Go also supports `external test packages`
+
+
+`go test help` tells us
+
+> Test files that declare a package with the suffix "_test" will be compiled as a separate package, and then linked and run with the main test binary.
+
+Because they are external, *_test packages are explicitly limited to the public API, and have to import the packages they test. In other words they function much more like a real client than unit tests.
+
+For more information see : [The Go Programming language](https://www.amazon.co.uk/Programming-Language-Addison-Wesley-Professional-Computing/dp/0134190440) Section 11.2.4: External Test Packages
+
+
+## Our First Acceptance Test
 
 Anyway, let's try and write that acceptance test - the one that will let us
 know when we're done.
